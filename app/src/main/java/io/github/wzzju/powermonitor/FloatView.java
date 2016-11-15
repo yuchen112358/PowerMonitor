@@ -93,15 +93,19 @@ public class FloatView extends Service {
     //This array caches the display data
     double[] ycache = new double[60];
 
-    public static boolean getSensorStatus(){
+    public static boolean getSensorStatus() {
         return SENSOR_OPEN;
     }
-    public static String[] getSensorData(){
+
+    public static String[] getSensorData() {
         return sensorData;
     }
-    public static String[] getNoSensorData(){
+
+    public static String[] getNoSensorData() {
         return nonSensorData;
     }
+
+
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -180,10 +184,10 @@ public class FloatView extends Service {
                         paramX = wmParams.x;
                         paramY = wmParams.y;
                         long secondTime = System.currentTimeMillis();
-                        if(secondTime -firstTime > 800){
-                            Toast.makeText(FloatView.this,"再按一次关闭数据更新服务!",Toast.LENGTH_SHORT).show();
+                        if (secondTime - firstTime > 800) {
+                            Toast.makeText(FloatView.this, "再按一次关闭数据更新服务!", Toast.LENGTH_SHORT).show();
                             firstTime = secondTime;//更新firstTime
-                        }else{
+                        } else {
 //                            wm.removeView(chart);//仅仅关闭图线更新
                             stopSelf();//关闭图线更新及数据更新
                         }
@@ -231,7 +235,7 @@ public class FloatView extends Service {
 //            nonSensorData[3] = NativeLib.GetCPUTemp(2);
 //            nonSensorData[4] = NativeLib.GetCPUTemp(3);
 //            nonSensorData[5] = NativeLib.GetCPUTemp(4);//GPU温度
-            NativeLib.GetAllCPUCurLoad();//可以导出CPU的负载
+//            NativeLib.GetAllCPUCurLoad();//可以导出CPU的负载
 //            for(int i = 0; i < 8;i++){
 //              NativeLib.GetCPUCurLoad(i);//可以分别导出每个CPU的负载
 //            }
